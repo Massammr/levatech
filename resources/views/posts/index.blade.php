@@ -7,6 +7,11 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <x-app-layout>
+    <x-slot name="header">
+        　Post
+    </x-slot>
+
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
         <div class='posts'>
@@ -15,6 +20,7 @@
                     <h2 class='title'>
     <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
 </h2>
+<a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class='body'>{{ $post->body }}</p>
 
 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
@@ -37,5 +43,7 @@
         }
     }
 </script>
+ <h1>ログインユーザー:{{ Auth::user()->name }}</h1>
     </body>
+    </x-app-layout>
 </html>
